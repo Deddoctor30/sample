@@ -223,7 +223,107 @@ console.log(name5 ?? "имя");
 
 // Примеры
 
-console.log('35' + - '22');
+console.log('35' + '22');
 console.log('35' * '22');
 console.log('35' - '22');
 console.log('35' > 22);
+
+
+
+
+//________________________________________________________________
+
+// Функции
+
+function name(params) {
+   
+}
+
+showMessage ();
+
+function showMessage() {
+   console.log('Сообщение');
+}
+
+showMessage ();
+showMessage ();
+
+
+// Работа с функциями
+
+function calcSum(numOne, numTwo) {
+   // function calcSum(numOne = 1, numTwo = 5) { - задать значения по умолчанию
+   console.log(numOne);
+   console.log(numTwo);
+
+   let numSum  = numOne + numTwo;
+   
+   console.log(`Результат: ${numSum}`);
+}
+
+calcSum (1, 5);
+
+
+
+
+// Функции колбэки
+
+function calcSum2 (numOne1, numTwo1, more, less) {
+   let sum = numOne1 + numTwo1;
+   
+   if (sum > 3) { 
+      more();
+   } else {
+      less();
+   }
+}
+
+function showMore() {
+   console.log('Больше 3');
+}
+
+function showLess() {
+   console.log('Меньше 3');
+}
+
+calcSum2 (1, 1, showMore, showLess);
+
+// Return - возврат 
+
+function calcSum2 (numOne2, numTwo2) {
+   let sum1 = numOne2 + numTwo2;
+   
+   return sum1;
+   // код ниже - не выполняется
+}
+
+let result6 = calcSum2(1, 1);
+
+console.log(`Сумма ${result6}`);
+
+
+
+// Рекурсия (когда функция сама взаимодействует с собой)
+// Пример с for
+
+function calcSumm4(numOne4, numTwo4) {
+   let result7 = 1;
+
+   for (let i = 0; i < numTwo4; i++) {
+      result7 *= numOne4;
+   }
+   return result7;
+}
+
+console.log(calcSumm4(3, 2));
+
+// Пример с рекурсией
+
+function calcSumm5(numOne5, numTwo5) {
+   if (numTwo5 === 1) {
+      return numOne5;
+   } else {
+      return numOne5 * calcSumm5(numOne5, numTwo5 - 1);
+   }
+}
+console.log(calcSumm5(3, 2));
