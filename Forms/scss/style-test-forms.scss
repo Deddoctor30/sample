@@ -1,0 +1,281 @@
+@import url(../css/Null.css);
+
+body {
+   background-color: rgb(219, 48, 48);
+}
+
+.header {
+   margin: 300px 500px;
+   width: 10%;
+   &__menu {
+   }
+}
+.menu {
+   &__btn {
+      :last-child {
+         display: none;
+      }
+   }
+
+   &__active {
+      :last-child {
+         display: block;
+      }
+      :first-child {
+         display: none;
+      }
+   }
+
+   &__list {
+      padding: 0px 0px 0px 15px;
+      :first-child {
+         margin: 5px 0px 0px 0px;
+         padding: 5px 0px 0px 0px;
+      }
+      :last-child {
+         padding: 0px 0px 5px 0px;
+      }
+      background-color: rgb(177, 185, 107);
+      display: none;
+      &_active {
+         display: block;
+      }
+   }
+
+
+   &__link {
+   }
+}
+
+
+.text {
+   font-size: 24px;
+   line-height: 30px;
+}
+
+.visual-btn {
+   background-color: rgb(154, 206, 230);
+   padding: 50px 60px;
+}
+
+
+.visual-all {
+   padding: 0px 15px;
+   &:hover {
+      text-decoration: underline;
+   }
+}
+
+
+
+.header {
+
+   &__phone {
+      margin: 100px 0px 0px 0px;
+      background-color: rgb(235, 199, 199);
+   }
+}
+.phone {
+   width: 204px;
+   &__number {
+      display: flex;
+      flex-wrap: wrap;
+      span {
+         display: block;
+         padding: 30px 30px;
+         color: white;
+      }
+   }
+}
+
+
+
+
+
+
+
+
+.textarea {
+   margin: 100px 0px 0px 0px;
+   textarea {
+      background-color: rgb(82, 152, 180);
+      font-size: 28px;
+      color: white;
+      padding: 15px;
+   }
+   &__counter {
+
+   }
+}
+
+
+
+
+
+
+
+
+// Форма
+
+.header {
+
+   &__form {
+   }
+}
+.form {
+
+   &__inner {
+      display: flex;
+   }
+
+   &__first-section {
+      margin: 0px 200px 0px 0px;
+      h2 {
+         margin: 0px 0px 5px 0px;
+      }
+      input {
+         padding: 10px 15px;
+         background-color: rgb(46, 46, 46);
+         border: 1px solid black;
+         border-radius: 5px;
+         color: white;
+         margin: 0px 0px 50px 0px;
+         font-size: 18px;
+         width: 300px;
+         height: 60px;
+      }
+      ::placeholder {
+         color: rgb(197, 197, 197);
+         font-size: 14px;
+         letter-spacing: 2px;
+         font-weight: 200;
+      }
+      textarea {
+         padding: 10px 15px;
+         background-color: rgb(46, 46, 46);
+         border: 1px solid black;
+         border-radius: 5px;
+         color: white;
+         margin: 0px 0px 20px 0px;
+         font-size: 18px;
+         width: 300px;
+      }
+   }
+
+   &__last-section {
+   }
+
+   &__radio {
+      margin: 0px 0px 30px 0px;
+      h2 {
+         margin: 0px 0px 5px 0px;
+      }
+      input {
+         margin: 0px 10px 0px 0px;
+      }
+   }
+
+   &__checkbox {
+      margin: 0px 0px 30px 0px;
+      input {
+         margin: 0px 10px 0px 0px;
+      }
+   }
+
+   &__download {
+      margin: 0px 0px 30px 0px;
+      input {
+         padding: 10px 0px 10px 0px;
+         color: white;
+         margin: 0px 0px 20px 0px;
+         font-size: 16px;
+      }
+   }
+
+   &__list {
+      margin: 0px 0px 50px 0px;
+      h2 {
+         margin: 0px 0px 5px 0px;
+      }
+      select {
+         padding: 8px 10px;
+         width: 300px;
+         height: 50px;
+         background-color: rgb(46, 46, 46);
+         border: 1px solid black;
+         border-radius: 5px;
+         color: white;
+         margin: 0px 0px 20px 0px;
+         font-size: 16px;
+         option {
+            display: block;
+         }
+      }
+   }
+
+   &__button {
+      button {
+         padding: 10px 15px;
+         background-color: rgb(46, 46, 46);
+         border: 1px solid black;
+         border-radius: 5px;
+         color: white;
+         margin: 0px 0px 20px 0px;
+         font-size: 18px;
+         width: 300px;
+         letter-spacing: 2px;
+         text-transform: uppercase;
+      }
+   }
+}
+
+.focus {
+   border: 2px solid greenyellow;
+}
+
+.btn {
+}
+
+.text {
+   font-size: 22px;
+   line-height: 30px;
+   letter-spacing: normal;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   color: white;
+}
+
+.download {
+      img {
+         width: 200px;
+      }
+}
+
+
+
+
+
+
+.font-size-test {
+   color: white;
+   margin: 20px 0px;
+   font-size: 20px;
+}
+.test {
+   color: white;
+   font-size: 20px;
+   &>* {
+      margin: 20px 0px;
+   }
+		&__procent {
+
+		}
+
+		&__em {
+
+		}
+
+		&__rem {
+
+		}
+}
+

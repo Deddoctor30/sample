@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/Forms/css/style-test-forms.css">
+   <title>Document</title>
+</head>
+<body>
+   <header class="header">
+
+      <form class="header__form form" name="form" action="#" method="get" enctype="multipart/form-data">
+         <div tabindex="-1" class="form__inner">
+            <div class="form__first-section text">
+               <h2>Поле ввода</h2>
+               <input type="text" value="" placeholder="Введите имя..." name="username" tabindex="1">
+               <h2>Текстовое поле ввода</h2>
+               <textarea name="tarea" id="" cols="30" rows="5" tabindex="2" placeholder="Введите тест..."></textarea>
+            </div>
+            <div class="form__last-section text">
+               <div class="form__radio">
+                  <h2>Радиокнопки</h2>
+                  <p><input type="radio" checked name="check" value="position-1" tabindex="3">Позиция №1</p>
+                  <p><input type="radio" name="check" value="position-2" tabindex="4">Позиция №2</p>
+               </div>
+               <div class="form__checkbox text">
+                  <p><input type="checkbox" name="check3" value="position-3" tabindex="5">Чекбокс</p>
+               </div>
+               <div class="form__download download text">
+                  <h2>Прикрепить файл</h2>
+                  <input type="file" name="download" value="position-4" tabindex="6">
+               </div>
+               <div class="form__list text">
+                  <h2>Список</h2>
+                  <select name="list" id="1" tabindex="7">
+                     <option value="red">Ферарри</option>
+                     <option value="wood">Форд</option>
+                     <option selected value="cool">Ауди</option>
+                     <option value="cool">Шеврале</option>
+                     <option value="2">Кадилак</option>
+                  </select>
+               </div>
+            </div>
+         </div>
+         <div class="form__button text">
+            <button class="btn" type="submit" tabindex="8">Отправить форму</button>
+         </div>
+      </form>
+
+   </header>
+   <script src="/Forms/js/script.js"></script>
+</body>
+</html>
