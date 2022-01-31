@@ -32,6 +32,7 @@
 25. Преобразовать данные с сайта в JSON                              form to JSON11
 26. Библиотека axios (для работы с сервером)                         axios11
 27. Геттеры и сеттеры                                                get11
+28. Local Storage                                                    localstorage11
 
 Справка:
 
@@ -1782,9 +1783,9 @@ console.log(user);
       // Писать в несколько строк
 
       let text = `Hello
-      it's me
-      your love
-      `;
+         it's me
+         your love
+         `;
       console.log(text);
 
 
@@ -5465,6 +5466,91 @@ ivan.say();
 
 
 
+
+
+// local Storage                                                                                                                                   localstorage11
+// на каждом сайте под каждый домен есть свое хранилище на 5мб данных
+
+// setItem('ключ', значение ключа)  - установить значение в сторадж
+localStorage.setItem('number', 5);
+
+// getItem('ключ')  - получить значение
+localStorage.getItem('number');
+
+console.log(localStorage.getItem('number'));                                                 // вывести в консоль
+
+
+// removeItem('ключ')  - удалить значение
+localStorage.removeItem('number');
+
+
+// clear()  - очистить все
+localStorage.clear();
+
+
+// пример на форме
+
+const checkbox = document.querySelector('#checkbox'),
+      form = document.querySelector('form'),
+      change = document.querySelector('#color');
+
+// сделать так, чтобы при нажатии на галочку в форме, она всегда была активна, при релооде или закрытии страницы
+if (localStorage.getItem('isCheked')) {                                                      // если в local storage есть isCheked, то
+   checkbox.checked = true;                                                                  // сделать галочку активной
+}
+
+if (localStorage.getItem('bg') === 'changed') {                                              // покраска формы в красный цвет из примера ниже
+   form.style.backgroundColor = 'red';
+} 
+
+checkbox.addEventListener('change', () => {                                                  // при клике(изменении состояния галочки) 
+   localStorage.setItem('isCheked', true);                                                   // в local storage будет записываться ключ isCheked со значением тру
+});
+
+
+// перекрашиваем форму по клику на кнопку, с записью в базу данных, чтобы информация сохранялась
+change.addEventListener('click', () => {
+   if (localStorage.getItem('bg') === 'changed') {
+      localStorage.removeItem('bg');
+      form.style.backgroundColor = '#fff';
+   } else {
+      localStorage.setItem('bg', 'changed');
+      form.style.backgroundColor = 'red';
+   }
+});
+
+
+
+// Также в local storage можно передавать данные, но их нужно серилизовать (перевести в json к примеру)
+
+const persone = {
+   name: 'alex',
+   age: 25
+};
+
+const serializePersone = JSON.stringify(persone);                                              // переводим объект в json
+
+localStorage.setItem('alex', serializePersone);                                                // закидываем в local storage объект в формате json
+   
+console.log(JSON.parse(localStorage.getItem('alex')));                                         // выводим в консоль полученный через гет объект с ключом алекс, который парсим обратно в объект из JSON
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    // ========= Примеры ================                                                                                   примеры11
 
 
@@ -5579,3 +5665,92 @@ ivan.say();
    let end = new Date();                                                // дата конца
    
    alert(`Цикл отработал за ${end - start} миллисекунд`);               // разница в миллисекундах между start и end
+
+
+
+
+
+
+
+
+
+
+
+
+
+   // Войны кода
+
+
+
+   // получить середину строки 1 символ или 2 если букв четное к-во
+
+      function getMiddle(s) {
+         const a = s.length;
+         const b = a / 2;
+         if (Number.isInteger(b)) {
+            return s.slice((b-1), (b+1))
+         } else {
+            return s.slice(b, (b+1))
+         }
+      }
+
+   // или так
+
+      function getMiddle(s) {
+         const b = s.length / 2;
+         if (s.length % 2 === 0) {                                // проверка через остаток
+            return s.slice((b-1), (b+1))
+         } else {
+            return s.slice(b, (b+1))
+         }
+      }
+
+
+
+
+
+
+
+
+   // получить наибольшее слово в строке по к-ву символов
+
+      function shortWord(str) {
+         let item = str.split(' ');
+         let tempo = 0;
+         for (let i = 0; i < item.length; i++) {
+            if (item[i].length > tempo) {
+               tempo = item[i].length;
+            }
+         }
+         return tempo;
+      }
+      
+      console.log(shortWord('Иногда я люблю играть со утра'));
+
+
+
+   // получить наименьшее слово в строке по к-ву символов
+
+   function shortWord(str) {
+      let item = str.split(' ');
+      let tempo = 100;
+      for (let i = 0; i < item.length; i++) {
+         if (item[i].length < tempo) {
+            tempo = item[i].length;
+         }
+      }
+      return tempo;
+   }
+   
+   console.log(shortWord('Иногда яaa люблю играть со утра'));
+
+
+   // или головокружительный вариант с варкода
+
+   function shortWord(s) {
+      return Math.min(...s.split(' ').map (s => s.length));
+   }
+   
+   console.log(shortWord('Иногда яaa люблю играть со утра'));
+
+
