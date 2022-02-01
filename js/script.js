@@ -5731,26 +5731,40 @@ console.log(JSON.parse(localStorage.getItem('alex')));                          
 
    // получить наименьшее слово в строке по к-ву символов
 
-   function shortWord(str) {
-      let item = str.split(' ');
-      let tempo = 100;
-      for (let i = 0; i < item.length; i++) {
-         if (item[i].length < tempo) {
-            tempo = item[i].length;
+      function shortWord(str) {
+         let item = str.split(' ');
+         let tempo = 100;
+         for (let i = 0; i < item.length; i++) {
+            if (item[i].length < tempo) {
+               tempo = item[i].length;
+            }
          }
+         return tempo;
       }
-      return tempo;
-   }
-   
-   console.log(shortWord('Иногда яaa люблю играть со утра'));
+      
+      console.log(shortWord('Иногда яaa люблю играть со утра'));
 
 
-   // или головокружительный вариант с варкода
+      // или головокружительный вариант с варкода
 
-   function shortWord(s) {
-      return Math.min(...s.split(' ').map (s => s.length));
-   }
-   
-   console.log(shortWord('Иногда яaa люблю играть со утра'));
+      function shortWord(s) {
+         return Math.min(...s.split(' ').map (s => s.length));
+      }
+      
+      console.log(shortWord('Иногда яaa люблю играть со утра'));
 
 
+
+
+
+
+
+
+      // Сделать строку со всеми заглавными буквами
+         String.prototype.toJadenCase = function () {
+            return this.split(" ").map(item => {
+               return `${item[0].toUpperCase()}${item.slice(1)}`
+            }).join(' ');
+         };
+         
+         String.prototype.toJadenCase("How can mirrors be real if our eyes aren't real");
