@@ -33,6 +33,7 @@
 26. Библиотека axios (для работы с сервером)                         axios11
 27. Геттеры и сеттеры                                                get11
 28. Local Storage                                                    localstorage11
+29. Регулярные выражения                                             выражения11
 
 Справка:
 
@@ -5546,6 +5547,59 @@ console.log(JSON.parse(localStorage.getItem('alex')));                          
 
 
 
+// Регулярные выражения                                                                                                 выражения11
+
+/*
+/pattern/flags   
+flags:
+i - искать в любом регистре
+g - искать все буквы
+m - искать во всех строках
+                                    флаги можно стакать все сразу
+*/
+
+
+const ans = prompt('введите что-то там');
+
+const reg = /n/i                                                                                   // pattern - n, flag - i(нижний и вернхий регистр)
+
+console.log(ans.search(reg));                                                                      // search - соответственно искать до первого совпадения
+console.log(ans.match(reg));                                                                       // match - искать более подробно (с флагом g - выдает массив)
+console.log(ans.replace(/./g, '*'));                                                               // replace - заменяет (_что заменить, '_на что заменить')(/./g - все элементы)
+                                                                                                   // чтобы заменить . нужно ее экранировать - /\./g, (\) - экран
+
+console.log('12-35-68'.replace(/-/g, ':'));                                                        // пример к реплейсу
+console.log(reg.test(ans));                                                                        // test - ищет и если найдет выводит true или false если не найдет
+
+
+
+
+// Поиск типов данных
+/*
+\d - искать числа
+\w - искать слова(буквы)
+\s - искать пробелы
+*/
+
+const ans = prompt('введите число');
+const reg = /\d/;
+console.log(ans.match(reg));
+
+// можно через const reg = /\d/g; - вывести все числа, если введено 200px будет массив [2, 0, 0] - дальше склеить в строку через join(',')  НЕТ
+// something.replace(/\D/g, '') - заменить все не числа на '' - пустое место, т.е. останутся только числа
+
+let str = 'My name is R2D2';
+console.log(str.match(/\w\d\w\d/i));                                                                  // - шаблон поиска буква - цифра - буква - цифра (найти R2D2)
+
+
+
+
+// Чтобы искать не буквы, не цифры и не пробелы - писать с большой буквы: \W, \D, \S
+
+
+
+
+
 
 
 
@@ -5712,6 +5766,8 @@ console.log(JSON.parse(localStorage.getItem('alex')));                          
 
 
 
+
+
    // получить наибольшее слово в строке по к-ву символов
 
       function shortWord(str) {
@@ -5760,7 +5816,11 @@ console.log(JSON.parse(localStorage.getItem('alex')));                          
 
 
 
-      // Сделать строку со всеми заглавными буквами
+
+
+
+
+   // Сделать строку со всеми заглавными буквами
          String.prototype.toJadenCase = function () {
             return this.split(" ").map(item => {
                return `${item[0].toUpperCase()}${item.slice(1)}`
@@ -5768,3 +5828,66 @@ console.log(JSON.parse(localStorage.getItem('alex')));                          
          };
          
          String.prototype.toJadenCase("How can mirrors be real if our eyes aren't real");
+
+
+         // читаемый вид
+         String.prototype.toJadenCase = function (i) {
+            return i.split(" ").map(item => {
+               return `${item[0].toUpperCase()}${item.slice(1)}`
+            }).join(' ');
+         };
+         
+         console.log(String.prototype.toJadenCase("How can mirrors be real if our eyes aren't real"));
+
+
+
+
+
+
+
+
+
+   // Проверить число на взятие корня и вернуть true или false
+      // мое чудо
+
+      var isSquare = function(n){
+         let a = Math.sqrt(n);
+         if (Number.isInteger(a)) {
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      
+      // чудо задрота
+         function isSquare(n) {
+            return Math.sqrt(n) % 1 === 0;
+          }
+
+
+
+
+
+
+
+      // Посчитать, сколько в массиве штук true 
+
+         function countSheeps(arrayOfSheep) {
+            let a = 0;
+            for (let i of arrayOfSheep) {
+               if (i === true) {
+                  a++;
+               }
+            }
+            return a;
+      }
+         console.log(countSheeps(arrayOfSheep));
+
+
+
+      // Естественно лютый вариант из варкода
+         function countSheeps(arrayOfSheeps) {
+            return arrayOfSheeps.filter(Boolean).length;
+         }
+         console.log(countSheeps(arrayOfSheep));
