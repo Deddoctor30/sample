@@ -508,6 +508,22 @@ if (0) {
 
 
 
+// switch...case
+// в switch передается что проверяем, и если switch === case, тогда выполняем что после : 
+input.target.addEventListener('input', () => {
+   switch(input.getAttribute('id')) {
+      case 'height':
+         height = +input.value;
+         break;
+      case 'weight':
+         weight = +input.weight;
+         break;
+      case 'age':
+         age = +input.age;
+         break;
+   }
+});
+
 
 
 //________________________for while___________________________________
@@ -1686,7 +1702,7 @@ console.log(user);
    let numOne4 = Math.round(5.845 * 10) / 10; // 58.45 => 58 => 5.8
    // вместо 10 можно использовать 100 если числа большего порядка
 
-   // Или использовать методж toFixed(n) - округляем число до n знаков после запятой, после чего
+   // Или использовать метод toFixed(n) - округляем число до n знаков после запятой, после чего
    // возвращается строка, которую нужно перевести в число =========== inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
 
 
@@ -5881,7 +5897,7 @@ console.log(str.match(/\w\d\w\d/i));                                            
                }
             }
             return a;
-      }
+         }
          console.log(countSheeps(arrayOfSheep));
 
 
@@ -5891,3 +5907,23 @@ console.log(str.match(/\w\d\w\d/i));                                            
             return arrayOfSheeps.filter(Boolean).length;
          }
          console.log(countSheeps(arrayOfSheep));
+
+
+
+
+
+
+
+
+         
+      // Сделать ряд  1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+
+         function SeriesSum(n) {
+            let a = 0;
+            for (let i = 1; i <= n; i++) {
+            a += 1 / (2 * i + (i - 2));
+            }
+            return a.toFixed(2);
+         }
+         
+         console.log(SeriesSum(2));
