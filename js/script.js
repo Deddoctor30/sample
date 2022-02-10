@@ -34,6 +34,11 @@
 27. Геттеры и сеттеры                                                get11
 28. Local Storage                                                    localstorage11
 29. Регулярные выражения                                             выражения11
+30. Свой фильтр                                                      фильтр11
+31. Map                                                              map11
+32. Прием модуль                                                     модуль11
+33. Модульность в js - CommonJS                                      CommonJS11
+34. type='module'                                                    type11
 
 Справка:
 
@@ -2281,7 +2286,7 @@ console.log(arr12.reverse());
 
 // Преобразование массивов
 
-// map - вызывает функцию для каждого элемента массива и возвраает массив результатов выполнения этой функции
+// map - вызывает функцию для каждого элемента массива и возвраает массив результатов выполнения этой функции                                   map11
 
 let arr13 = ['Petya', 'Vasya', "Diana", "Дима",];
 
@@ -5488,68 +5493,68 @@ ivan.say();
 // local Storage                                                                                                                                   localstorage11
 // на каждом сайте под каждый домен есть свое хранилище на 5мб данных
 
-// setItem('ключ', значение ключа)  - установить значение в сторадж
-localStorage.setItem('number', 5);
+   // setItem('ключ', значение ключа)  - установить значение в сторадж
+   localStorage.setItem('number', 5);
 
-// getItem('ключ')  - получить значение
-localStorage.getItem('number');
+   // getItem('ключ')  - получить значение
+   localStorage.getItem('number');
 
-console.log(localStorage.getItem('number'));                                                 // вывести в консоль
-
-
-// removeItem('ключ')  - удалить значение
-localStorage.removeItem('number');
+   console.log(localStorage.getItem('number'));                                                 // вывести в консоль
 
 
-// clear()  - очистить все
-localStorage.clear();
+   // removeItem('ключ')  - удалить значение
+   localStorage.removeItem('number');
 
 
-// пример на форме
-
-const checkbox = document.querySelector('#checkbox'),
-      form = document.querySelector('form'),
-      change = document.querySelector('#color');
-
-// сделать так, чтобы при нажатии на галочку в форме, она всегда была активна, при релооде или закрытии страницы
-if (localStorage.getItem('isCheked')) {                                                      // если в local storage есть isCheked, то
-   checkbox.checked = true;                                                                  // сделать галочку активной
-}
-
-if (localStorage.getItem('bg') === 'changed') {                                              // покраска формы в красный цвет из примера ниже
-   form.style.backgroundColor = 'red';
-} 
-
-checkbox.addEventListener('change', () => {                                                  // при клике(изменении состояния галочки) 
-   localStorage.setItem('isCheked', true);                                                   // в local storage будет записываться ключ isCheked со значением тру
-});
+   // clear()  - очистить все
+   localStorage.clear();
 
 
-// перекрашиваем форму по клику на кнопку, с записью в базу данных, чтобы информация сохранялась
-change.addEventListener('click', () => {
-   if (localStorage.getItem('bg') === 'changed') {
-      localStorage.removeItem('bg');
-      form.style.backgroundColor = '#fff';
-   } else {
-      localStorage.setItem('bg', 'changed');
-      form.style.backgroundColor = 'red';
+   // пример на форме
+
+   const checkbox = document.querySelector('#checkbox'),
+         form = document.querySelector('form'),
+         change = document.querySelector('#color');
+
+   // сделать так, чтобы при нажатии на галочку в форме, она всегда была активна, при релооде или закрытии страницы
+   if (localStorage.getItem('isCheked')) {                                                      // если в local storage есть isCheked, то
+      checkbox.checked = true;                                                                  // сделать галочку активной
    }
-});
+
+   if (localStorage.getItem('bg') === 'changed') {                                              // покраска формы в красный цвет из примера ниже
+      form.style.backgroundColor = 'red';
+   } 
+
+   checkbox.addEventListener('change', () => {                                                  // при клике(изменении состояния галочки) 
+      localStorage.setItem('isCheked', true);                                                   // в local storage будет записываться ключ isCheked со значением тру
+   });
+
+
+   // перекрашиваем форму по клику на кнопку, с записью в базу данных, чтобы информация сохранялась
+   change.addEventListener('click', () => {
+      if (localStorage.getItem('bg') === 'changed') {
+         localStorage.removeItem('bg');
+         form.style.backgroundColor = '#fff';
+      } else {
+         localStorage.setItem('bg', 'changed');
+         form.style.backgroundColor = 'red';
+      }
+   });
 
 
 
-// Также в local storage можно передавать данные, но их нужно серилизовать (перевести в json к примеру)
+   // Также в local storage можно передавать данные, но их нужно серилизовать (перевести в json к примеру)
 
-const persone = {
-   name: 'alex',
-   age: 25
-};
+   const persone = {
+      name: 'alex',
+      age: 25
+   };
 
-const serializePersone = JSON.stringify(persone);                                              // переводим объект в json
+   const serializePersone = JSON.stringify(persone);                                              // переводим объект в json
 
-localStorage.setItem('alex', serializePersone);                                                // закидываем в local storage объект в формате json
-   
-console.log(JSON.parse(localStorage.getItem('alex')));                                         // выводим в консоль полученный через гет объект с ключом алекс, который парсим обратно в объект из JSON
+   localStorage.setItem('alex', serializePersone);                                                // закидываем в local storage объект в формате json
+      
+   console.log(JSON.parse(localStorage.getItem('alex')));                                         // выводим в консоль полученный через гет объект с ключом алекс, который парсим обратно в объект из JSON
 
 
 
@@ -5609,8 +5614,122 @@ console.log(str.match(/\w\d\w\d/i));                                            
 
 
 
-
 // Чтобы искать не буквы, не цифры и не пробелы - писать с большой буквы: \W, \D, \S
+
+
+
+
+
+
+
+
+
+
+
+
+// CommonJS                                                                                     CommonJS11
+// Webpack 
+// нужно установить node.js => npm init => npm i webpack webpack-cli - g (установить глобально) (возможно нужно делать с -D как в галпе)
+// закинуть файл webpack.config.js в корень с проектом и содержимым:
+
+'use strict';
+
+let path = require('path');                           // рабочая переменная
+
+module.exports = {
+   mode: 'development',                               // мод development или production как и в галпе
+   entry: './src/js/script.js',                       // входящий файл жс'а
+   output: {
+      filename: 'bundle.js',                          // итоговый файл
+      path: __dirname + '/dist/js'                    // __dirname - корень проекта - путь для итогового жс'a
+   },
+   watch: true,                                       // как и в галпе ватчер
+
+   devtool: "source-map",                             // карту можно посмотреть в источниках, 
+
+   module: {}
+};
+
+
+// Далее создаем в папке js папку modules и там уже создаем фалы js с названиями отдельных модулей
+// в новом js создаем функцию, с именем (к примеру tabs)
+// внутрь функции помещаем внутреннести этого модуля, а в конце прописываем:
+
+module.exports = tabs;                                // где tabs - название функции
+
+// В файле script.js - файл сборщик всех модулей пишем:
+
+
+
+// Модули с ES6
+
+// Для экспорта файлов пишем:
+
+export let one = 1; 
+
+// или 
+
+let two = 2;
+
+export {two};
+
+// можно экспортить все что угодно:
+
+export function sayHi() {
+   console.log('Say hi');
+}
+
+
+// Импорт файлов
+
+import {one, two} from './main';                         // импорт 2х переменных из папки main в той же папке, что и экспорт
+
+// Браузер не умеет собирать импорты, для этого нужен webpack
+
+// Можно сразу же переименовать файл после импорта:
+
+import {one as first} from './main';
+
+console.log(first);
+
+// Можно испортировать сразу все:
+
+import * as data from './main';
+
+// А обращаться к ним:
+
+console.log(`${data.one} and ${data.two}`); 
+
+// data становится объектом, и к нему соответствующее обращение через .
+
+// Есть еще экспорт по умолчанию (в файле может быть только 1 такой default)
+export default function sayHi() {
+   console.log('hi');
+}
+// в другом жс файле:
+//import sayHi form './main';                                // без {} скобок
+
+
+
+
+
+// type='module'                                                                       type11
+// не использовать webpack а подключить в html особым образом скрипты
+
+// В HTML:
+
+/*
+<script type='module' src="./js/main.js"></script>                                 // main.js откуда экспортируем
+<script type='module' src="./js/script.js"></script>                               // script.js куда импортируем
+*/
+
+// страница будет по 1 подключать каждый скрипт, что не очень хорошо
+// также в самом import... в сылке на export нужно прописывать файлы с расширением .js:
+import {one, two} from './main.js';
+
+
+
+
 
 
 
@@ -5735,6 +5854,90 @@ console.log(str.match(/\w\d\w\d/i));                                            
    let end = new Date();                                                // дата конца
    
    alert(`Цикл отработал за ${end - start} миллисекунд`);               // разница в миллисекундах между start и end
+
+
+
+
+
+
+
+
+
+
+   // Создать свой фильтр (вместо .filter) для фильтрации массива                                                               фильтр11
+
+   const filterThis = [2, 4, 3, 6, 8, 9];
+
+   const filter = (arr, func) => {
+      const filterArr = [];                                              // создаем переменную типа массив
+      for (let elem of arr) {                                            // для каждого элемента массива выполнить:
+         if (func(elem)) {                                               // пушим элемент
+            filterArr.push(elem);
+         }
+      }
+      return filterArr;
+   }
+
+   console.log(filter(filterThis, (elem) => elem % 3 == 0));              // отфильтровать массив и вывести все числа в массиве, которые делятся на 3 без остатка      
+
+
+
+   // Свой some (возращает true или false если есть хоть 1 элемент)
+
+   const someOf = ['java', 'javascript', 'pyton'];
+
+   const some = (arr, func) => {
+      for (let elem of arr) {
+         if (func(elem)) return true;
+      }
+      return false;
+   }
+   
+   console.log(some(someOf, (elem) => elem === 'java'));
+
+
+
+
+
+
+   // Свой map
+
+   const mapMe = [1000, 800, 2400, 500];
+
+   const map = (arr, func) => {
+      const mapArr = [];                                        
+      for (let elem of arr) {                                          
+         mapArr.push(func(elem));
+      }
+      return mapArr;
+   }
+
+   console.log(map(mapMe, (elem) => elem + 200));
+
+
+
+
+
+
+
+
+
+
+   // Свой модуль                                                                                                       модуль11
+
+   const user = (function(){                                                                    // это анонимная, самовызывающаяся функция
+      const privat = function() {                                                               // создаем переменную - функцию с действием
+         console.log("I'm privat");
+      };
+
+      return {
+         sayHello: privat                                                                       // метод sayHello с сылкой на переменную - функцию
+      };
+   }());
+
+   user.sayHello();                                                                             // вызываем метод sayHello
+
+
 
 
 
@@ -5927,3 +6130,120 @@ console.log(str.match(/\w\d\w\d/i));                                            
          }
          
          console.log(SeriesSum(2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // Есть переменная с числами, ее нужно обернуть в массив с числами и сделать реверс
+
+            function digitize(n) {
+               return String(n).split("").reverse().map(Number);
+            }
+            console.log(digitize(987654321));
+
+         // или более расписанный вариант
+
+            function digitize(n) {
+               return String(n).split( "" ).map((i)=>{
+                  return Number(i)
+               });
+            }
+            console.log(digitize(987654321));
+
+
+
+
+
+
+
+
+
+
+      // Есть двумерный массив, первое число - сколько в автобус зашло человек, второе сколько вышло
+      // к-во масиввов внутри - к-во остановок, нужно сосчитать, сколько людей осталось в конце
+
+         let arr = [[10, 0], [3, 5], [5, 8]];
+
+         var number = function(busStops){
+            let a = 0;
+            for (let i = 0; i < busStops.length; i++) {
+               a += busStops[i][0] - busStops[i][1];
+            }
+            return a;
+         }
+         
+         console.log(number(arr));
+      
+
+         
+         // мега скилл 1 строчка с сайта
+
+         const number = (busStops) => busStops.reduce((rem, [on, off]) => rem + on - off, 0);
+
+
+
+
+
+
+
+
+
+      // Функция принимает число, если четное вывести слово - четное, если нет - нечетное
+
+         function even_or_odd(number) {
+            if (number % 2 === 0) {
+              return 'even';
+            } else {
+              return 'Odd';
+            }
+          }
+
+
+          // Сайт:
+          function even_or_odd(number) {
+            return number % 2 ? "Odd" : "Even"
+          }
+
+
+
+
+
+
+
+      // Boolean значение перевести в строку 'true' или 'false'
+         
+         function booleanToString(b){
+            return b = String(b);
+         }
+          
+
+
+
+
+
+      // Дают массив, нужно из него выбрать наименьшее число
+
+         function findSmallestInt(args) {
+            return args.sort((a, b) => a - b)[0];
+         }
+         
+         let arr = [22, -2, 11, 135, -257];
+         
+         console.log(findSmallestInt(arr));
+
+
+      // Рил таф с сайта:
+
+         function findSmallestInt(args) {
+            return Math.min(...args)
+         }
+      
