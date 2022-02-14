@@ -39,6 +39,8 @@
 32. Прием модуль                                                     модуль11
 33. Модульность в js - CommonJS                                      CommonJS11
 34. type='module'                                                    type11
+35. Try and Catch                                                    try11
+36. Поддержка старыми браузерами                                     старостьнерадость11
 
 Справка:
 
@@ -2662,7 +2664,7 @@ console.log(`Пользователи: ${reduceValueTwo}`);
    console.log(elemFive);
 
    // поиск по ID ('#listItem')
-   // поиск по атрибуду ('[data-item]')      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   // поиск по атрибуту ('[data-item]')      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    
 
 
@@ -5941,6 +5943,260 @@ import {one, two} from './main.js';
 
 
 
+
+
+
+
+
+   // Try and Catch - в случае ошибки, не останавливает весь код, а продолжает его возможное выполнение
+
+   try {
+      console.log('Normal');
+      console.log('a');
+      console.log('Result');
+   } catch (error) {                                                                               // error - сама ошибка
+      console.log(error);
+   }
+
+   console.log('Success');
+
+   // Если в коде с try будет ошибка, произойдет условие из catch и код пойдет дальше
+
+   try {
+      console.log('Normal');
+   } catch (error) {
+      console.log(error.name);                                                                     // Разложение на вывод ошибки
+      console.log(error.message);
+      console.log(error.stack);
+   }
+
+   // Также можно как и в промисах еще вывести в конце finally
+
+   try {
+      console.log('Normal');
+   } catch (error) {
+      console.log(error);                                                                     
+   } finally {                                                                                     // Выполнить эту часть кода в любом случае
+      console.log('Выполнить в любом случае');
+   }
+
+
+
+
+
+   
+
+
+
+
+
+
+
+   // Поддержка кода старыми браузерами                                                            старостьнерадость11
+
+
+      // 1. Babel
+      // Смотри видео, мне лень это писать :[]
+
+      // npm install --save-dev @babel/core @babel/cli @babel/preset-env       из документации
+
+      // Файл webpack.config вместе с бабилем:
+      'use strict';
+
+      let path = require('path');
+
+      module.exports = {
+         mode: 'development',
+         entry: './src/js/script.js',
+         output: {
+            filename: 'bundle.js',
+            path: __dirname + '/dist/js'                    // __dirname - корень проекта
+         },
+         watch: true,
+
+         devtool: "source-map",
+
+         module: {
+            rules: [
+               {
+               test: /\.m?js$/,
+               exclude: /(node_modules|bower_components)/,
+               use: {
+                  loader: 'babel-loader',
+                  options: {
+                     presets: [['@babel/preset-env', {
+                        debug: true,
+                        corejs: 3,
+                        useBuiltIns: "usage"
+                     }]]
+                  }
+               }
+               }
+            ]
+         }
+      };
+
+
+
+
+      // Затем в файле package.json добавить (после autor и licence): 
+/*
+      "browserslist": [
+         "> 1%"
+      ],
+*/
+
+
+
+      // После этого в терминале пишем:
+
+      // npm i --save-dev babel-loader
+      // npm i --save-dev core-js
+      // После этого запускаем webpack и все должно работать
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   // JQuery уже немного устарел, но можно встретить в коде
+   /*
+   jquery можно скачать в папку, можно подключить с сайтов jquery cdn или через npm пакеты: npm i jquery --save
+
+   Подключить:
+   в скрипте в котором работаешь прописать 
+      import 'jquery';
+
+   */
+
+
+import $ from 'jquery';
+
+$(document).ready(function() {                     // аналог подгрузки страницы DOMContent loader
+   // Добавить класс к элементу при наведении на него через hover (как в CSS)
+   $('.list-item').first().hover(function() {      // находим эолемент через $, .first - первый элем. .hover = addEventList() только работает как hover в CSS
+      $(this).toggleClass('active');               // $(this) вместо event в функции, обращаемся к событию и toggleClass = classList.toggle
+   });
+
+   // Найти 3 кнопку и сделать анимацию сокрытия для четных изображений
+   $('.list-item:eq(2)').on('click', function() {                      // on = addEventListener()
+      $('.image:even').fadeToggle();                                   // находим изображения => четное и делаем готовую анимацию fadeToggle()
+   });
+
+   // Написать анимацию вручную
+   $('.list-item:eq(4)').on('click', function() {                      // on = addEventListener()
+      $('.image:odd').animate({
+         opacity: 'toggle',
+         height: 'toggle',
+      }, 2000);
+   });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Функции генераторы
+// каждый раз при вызове функции будет выводится своё в yield по порядку
+
+// задается так:
+
+function* generator() {
+   yield 'S';
+   yield 't';
+   yield 's';
+}
+
+const str =  generator();
+
+console.log(str.next());            // будет объект: value = S, done: false и каждый дальше будет вызывать свое
+console.log(str.next().value);      // .value - выведет только S
+
+
+
+
+
+// Еще пример
+
+function* count(n) {
+   for (let i = 0; i < n; i++) {
+      yield i;
+   }
+}
+
+const counter = count(7);
+
+console.log(counter.next().value);
+console.log(counter.next().value);
+console.log(counter.next().value);     // будет 0, 1, 2
+
+
+// Вместо console.log можно сделать через for of
+
+for (let k of count(7)) {
+   console.log(k);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   // Анимации через requestAnimationFrame
+
+   const btn = document.querySelector('.btn'),
+         elem = document.querySelector('.box');
+
+   function myAnimation() {
+      pos++;
+      elem.style.top = pos + "px";
+      elem.style.left = pos + "px";
+
+      if (pos < 300) {
+         requestAnimationFrame(myAnimation);
+      }
+   }
+
+   btn.addEventListener('click', () => requestAnimationFrame(myAnimation));
+   
+
+
+
+
+
+
+
+
+
+// Сайты с кодом:
+// 1.Nisnom.com
+// 2. Slick-slider
 
 
 

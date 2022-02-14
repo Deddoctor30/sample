@@ -1,7 +1,5 @@
-function findSmallestInt(args) {
-    return args.sort((a, b) => a - b)[0];
-}
+import 'jquery';
 
-let arr = [22, -2, 11, 135, -257];
+const elem = $('menu__item');
 
-console.log(findSmallestInt(arr)); 
+console.log(elem);
